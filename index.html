@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de Aviones y Vuelos</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <header>
+        <h1>Gestión de Aviones y Vuelos</h1>
+    </header>
+
+    <main>
+        <!-- Sección para Aviones -->
+        <section class="crud-section">
+            <h2>Gestión de Aviones</h2>
+            <form class="crud-form" id="avion-form">
+                <input type="text" id="avion-nombre" placeholder="Nombre del Avión" required>
+                <button type="submit" class="btn">Agregar Avión</button>
+            </form>
+
+            <table class="crud-table">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nombre</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Aquí se mostrarán los aviones -->
+                    <tr>
+                        <td>1</td>
+                        <td>Boeing 737</td>
+                        <td>
+                            <button class="btn">Editar</button>
+                            <button class="btn delete">Eliminar</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- Sección para Vuelos -->
+        <section class="crud-section">
+            <h2>Gestión de Vuelos</h2>
+            <form class="crud-form" id="vuelo-form">
+                <input type="text" id="vuelo-destino" placeholder="Destino del Vuelo" required>
+                <button type="submit" class="btn">Agregar Vuelo</button>
+            </form>
+
+            <table class="crud-table">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Destino</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Aquí se mostrarán los vuelos -->
+                    <tr>
+                        <td>1</td>
+                        <td>New York</td>
+                        <td>
+                            <button class="btn">Editar</button>
+                            <button class="btn delete">Eliminar</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 202
