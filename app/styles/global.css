@@ -1,3 +1,5 @@
+/*Diseño del registro de aviones*/
+
 .register-airplane-container {
   max-width: 600px;
   margin: 0 auto;
@@ -111,4 +113,68 @@ small {
 
 .submit-button:hover {
   background-color: #0056b3;
+}
+
+/*Diseño del formulario de consulta*/
+
+.consult-airplane-container {
+  max-width: 600px;
+  margin: auto;
+  padding: 20px;
+}
+
+.title {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.subtitle {
+  font-size: 16px;
+  margin-bottom: 20px;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.form-group input,
+.form-group select {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.form-buttons {
+  display: flex;
+  justify-content: space-between;
+}
+
+.clear-button {
+  background-color: #f44336; /* Rojo */
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.search-button {
+  background-color: #4CAF50; /* Verde */
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.clear-button:hover,
+.search-button:hover {
+  opacity: 0.8;
 }
