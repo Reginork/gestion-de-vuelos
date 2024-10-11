@@ -1,7 +1,9 @@
 # ingenieria-web
 Repositorio del trabajo asignado a ingeniería web en FE
 
-# Sprint 1:
-* Desarrolladores Front-end (Ingeniería web): Crearán las interfaces de usuario para cada acción del CRUD tanto de aviones como de vuelos, o que quedaron comprometidas en cada sprint.
+# Sprint 2:
+* Se realiza la maquetación de las HU asignadas a este sprint, basados en el diseño de Figma.
 
-* Se crearon botones para cada acción del CRUD, tanto de aviones como de vuelos.
+# Páginas que se crearon:
+* Registro de aviones.
+* Consulta de aviones.
