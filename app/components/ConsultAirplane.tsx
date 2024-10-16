@@ -23,11 +23,11 @@ const ConsultAirplane: React.FC = () => {
 
   return (
     <div className="consult-airplane-container">
-      <h1 className="title">Consultar Aviones</h1>
+      <h1 className="title">Consultar aviones</h1>
       <p className="subtitle">Registre uno de los siguientes datos para la consulta</p>
       <form className="consult-airplane-form" onSubmit={handleSearch}>
         <div className="form-group">
-          <label htmlFor="maxSeats">Cantidad Máxima de Asientos</label>
+          <label htmlFor="maxSeats">Cantidad máxima de asientos</label>
           <input
             type="number"
             id="maxSeats"
@@ -39,7 +39,7 @@ const ConsultAirplane: React.FC = () => {
         </div>
 
         <div className="form-group">
-          <label htmlFor="seatDistribution">Distribución de Asientos</label>
+          <label htmlFor="seatDistribution">Distribución de asientos</label>
           <input
             type="text"
             id="seatDistribution"
@@ -51,7 +51,7 @@ const ConsultAirplane: React.FC = () => {
         </div>
 
         <div className="form-group">
-          <label htmlFor="airplaneId">Id Aeronave</label>
+          <label htmlFor="airplaneId">Id aeronave</label>
           <input
             type="text"
             id="airplaneId"
@@ -63,7 +63,7 @@ const ConsultAirplane: React.FC = () => {
         </div>
 
         <div className="form-group">
-          <label htmlFor="airplaneType">Tipo de Avión</label>
+          <label htmlFor="airplaneType">Tipo de avión</label>
           <input
             type="text"
             id="airplaneType"
