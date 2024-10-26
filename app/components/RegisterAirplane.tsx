@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
+import DOMPurify from 'dompurify'; // Para prevenir ataques XSS
 import '../styles/global.css';
 
 const RegisterAirplane: React.FC = () => {
@@ -9,72 +10,114 @@ const RegisterAirplane: React.FC = () => {
   const [seatDistribution, setSeatDistribution] = useState('');
   const [airplaneId, setAirplaneId] = useState('');
   const [errors, setErrors] = useState<{ [key: string]: string }>({});
-  const [showError, setShowError] = useState(false);
-  const [showSuccess, setShowSuccess] = useState(false);
-  const [missingFields, setMissingFields] = useState<string[]>([]);
+  const [successMessage, setSuccessMessage] = useState(false);
+  const [showWarningModal, setShowWarningModal] = useState(false); // Estado para el modal de aviso
+
+  // Funciones de validación individuales para cada campo
+  const validateAirplaneType = (value: string) => {
+    if (!value || value.length < 2 || value.length > 50) {
+      return 'El tipo de avión debe tener entre 2 y 50 caracteres';
+    }
+    return '';
+  };
+
+  const validateSeatCapacity = (value: string) => {
+    const numberValue = Number(value);
+    if (!value || isNaN(numberValue) || numberValue < 50 || numberValue > 800) {
+      return 'La capacidad debe ser un número entre 50 y 800';
+    }
+    return '';
+  };
+
+  const validateSeatDistribution = (value: string) => {
+    if (!['2-4-2', '3-3-3', '2-2-2'].includes(value)) {
+      return 'Seleccione una distribución de asientos válida';
+    }
+    return '';
+  };
+
+  const validateAirplaneId = (value: string) => {
+    if (!value || value.length < 5 || value.length > 10) {
+      return 'El ID de avión debe tener entre 5 y 10 caracteres';
+    }
+    return '';
+  };
 
   const handleRegister = (e: React.FormEvent) => {
     e.preventDefault();
-    const newErrors: { [key: string]: string } = {};
-    const fieldsMissing: string[] = [];
 
-    // Validación de campos
-    if (!airplaneType) {
-      newErrors.airplaneType = 'El tipo de avión es obligatorio';
-      fieldsMissing.push('Tipo de avión');
-    }
-    if (!seatCapacity) {
-      newErrors.seatCapacity = 'La capacidad de asientos es obligatoria';
-      fieldsMissing.push('Capacidad de asientos');
-    }
-    if (!seatDistribution) {
-      newErrors.seatDistribution = 'La distribución de asientos es obligatoria';
-      fieldsMissing.push('Distribución de asientos');
-    }
+    // Validar todos los campos al enviar el formulario
+    const airplaneTypeError = validateAirplaneType(airplaneType);
+    const seatCapacityError = validateSeatCapacity(seatCapacity);
+    const seatDistributionError = validateSeatDistribution(seatDistribution);
+    const airplaneIdError = validateAirplaneId(airplaneId);
 
-    // Si hay errores, mostrar en la ventana emergente
-    if (fieldsMissing.length > 0) {
-      setMissingFields(fieldsMissing); // Establece los campos faltantes
-      setShowError(true); // Mostrar ventana emergente de error
-      setErrors(newErrors); // Actualiza los errores
+    // Si hay errores, actualizamos el estado de errores y mostramos el modal de aviso
+    if (airplaneTypeError || seatCapacityError || seatDistributionError || airplaneIdError) {
+      setErrors({
+        airplaneType: airplaneTypeError,
+        seatCapacity: seatCapacityError,
+        seatDistribution: seatDistributionError,
+        airplaneId: airplaneIdError,
+      });
+      setShowWarningModal(true); // Mostrar modal de aviso
       return;
     }
 
-    // Si todos los campos están llenos, aquí puedes realizar el registro
+    // Si no hay errores, procesamos el formulario
+    const sanitizedAirplaneType = DOMPurify.sanitize(airplaneType);
+    const sanitizedSeatCapacity = DOMPurify.sanitize(seatCapacity);
+    const sanitizedSeatDistribution = DOMPurify.sanitize(seatDistribution);
+    const sanitizedAirplaneId = DOMPurify.sanitize(airplaneId);
+
     console.log({
-      airplaneType,
-      seatCapacity,
-      seatDistribution,
-      airplaneId,
+      airplaneType: sanitizedAirplaneType,
+      seatCapacity: sanitizedSeatCapacity,
+      seatDistribution: sanitizedSeatDistribution,
+      airplaneId: sanitizedAirplaneId,
     });
 
-    // Mostrar ventana de registro exitoso
-    setShowSuccess(true);
-    
-    // Reiniciar el formulario después de un registro exitoso
-    resetForm();
-  };
+    // Mostrar modal de éxito
+    setSuccessMessage(true);
 
-  const resetForm = () => {
+    // Resetear formulario
     setAirplaneType('');
     setSeatCapacity('');
     setSeatDistribution('');
     setAirplaneId('');
-    setErrors({}); // Limpia los errores
-  };
-
-  const handleCloseErrorModal = () => {
-    setShowError(false);
-  };
-
-  const handleCloseSuccessModal = () => {
-    setShowSuccess(false);
+    setErrors({});
   };
 
   return (
     <div className="register-airplane-container">
       <h1 className="title">Registro de aviones</h1>
-      <p className="subtitle">Registre los aviones ingresados a la compañía</p>
+
+      {/* Modal de éxito */}
+      {successMessage && (
+        <div className="modal">
+          <div className="modal-content">
+            <h2>¡Registro exitoso!</h2>
+            <p>El avión ha sido registrado correctamente.</p>
+            <button className="close-modal" onClick={() => setSuccessMessage(false)}>
+              Cerrar
+            </button>
+          </div>
+        </div>
+      )}
+
+      {/* Modal de aviso cuando hay campos obligatorios sin completar */}
+      {showWarningModal && (
+        <div className="modal">
+          <div className="modal-content">
+            <h2>Campos obligatorios no completados</h2>
+            <p>Por favor, complete todos los campos requeridos antes de registrar el avión.</p>
+            <button className="close-modal" onClick={() => setShowWarningModal(false)}>
+              Volver al formulario
+            </button>
+          </div>
+        </div>
+      )}
+
       <form className="register-airplane-form" onSubmit={handleRegister} noValidate>
         <div className="form-group">
           <label htmlFor="airplaneType">Tipo de avión<span className="required">*</span></label>
@@ -83,14 +126,11 @@ const RegisterAirplane: React.FC = () => {
             id="airplaneType"
             placeholder="Ingrese el tipo de avión"
             value={airplaneType}
-            onChange={(e) => {
-              setAirplaneType(e.target.value);
-              setErrors({ ...errors, airplaneType: '' }); // Limpia el error al escribir
-            }}
+            onChange={(e) => setAirplaneType(e.target.value)}
+            onBlur={(e) => setErrors({ ...errors, airplaneType: validateAirplaneType(e.target.value) })}
             required
           />
           {errors.airplaneType && <small className="error-message">{errors.airplaneType}</small>}
-          <small>Ejemplo: Boeing 737, Airbus A320</small>
         </div>
 
         <div className="form-group">
@@ -100,85 +140,67 @@ const RegisterAirplane: React.FC = () => {
             id="seatCapacity"
             placeholder="Ingrese la capacidad de asientos"
             value={seatCapacity}
-            onChange={(e) => {
-              setSeatCapacity(e.target.value);
-              setErrors({ ...errors, seatCapacity: '' }); // Limpia el error al escribir
-            }}
+            onChange={(e) => setSeatCapacity(e.target.value)}
+            onBlur={(e) => setErrors({ ...errors, seatCapacity: validateSeatCapacity(e.target.value) })}
             required
           />
           {errors.seatCapacity && <small className="error-message">{errors.seatCapacity}</small>}
-          <small>Número entero</small>
         </div>
 
         <div className="form-group">
           <label htmlFor="seatDistribution">Distribución de asientos<span className="required">*</span></label>
           <div className="seat-options">
-            <button type="button" className={`seat-option ${seatDistribution === '2-4-2' ? 'selected' : ''}`} onClick={() => {
-              setSeatDistribution('2-4-2');
-              setErrors({ ...errors, seatDistribution: '' }); // Limpia el error al seleccionar
-            }}>2-4-2</button>
-            <button type="button" className={`seat-option ${seatDistribution === '3-3-3' ? 'selected' : ''}`} onClick={() => {
-              setSeatDistribution('3-3-3');
-              setErrors({ ...errors, seatDistribution: '' }); 
-            }}>3-3-3</button>
-            <button type="button" className={`seat-option ${seatDistribution === '2-2-2' ? 'selected' : ''}`} onClick={() => {
-              setSeatDistribution('2-2-2');
-              setErrors({ ...errors, seatDistribution: '' }); 
-            }}>2-2-2</button>
+            <button
+              type="button"
+              className={`seat-option ${seatDistribution === '2-4-2' ? 'selected' : ''}`}
+              onClick={() => {
+                setSeatDistribution('2-4-2');
+                setErrors({ ...errors, seatDistribution: validateSeatDistribution('2-4-2') });
+              }}
+            >
+              2-4-2
+            </button>
+            <button
+              type="button"
+              className={`seat-option ${seatDistribution === '3-3-3' ? 'selected' : ''}`}
+              onClick={() => {
+                setSeatDistribution('3-3-3');
+                setErrors({ ...errors, seatDistribution: validateSeatDistribution('3-3-3') });
+              }}
+            >
+              3-3-3
+            </button>
+            <button
+              type="button"
+              className={`seat-option ${seatDistribution === '2-2-2' ? 'selected' : ''}`}
+              onClick={() => {
+                setSeatDistribution('2-2-2');
+                setErrors({ ...errors, seatDistribution: validateSeatDistribution('2-2-2') });
+              }}
+            >
+              2-2-2
+            </button>
           </div>
           {errors.seatDistribution && <small className="error-message">{errors.seatDistribution}</small>}
-          <small>Seleccione una opción de distribución</small>
         </div>
 
         <div className="form-group">
-          <label htmlFor="airplaneId">ID</label>
+          <label htmlFor="airplaneId">ID de avión</label>
           <input
             type="text"
             id="airplaneId"
-            placeholder="Id de avión"
+            placeholder="Ingrese el ID del avión"
             value={airplaneId}
-            onChange={(e) => {
-              setAirplaneId(e.target.value);
-            }}
+            onChange={(e) => setAirplaneId(e.target.value)}
+            onBlur={(e) => setErrors({ ...errors, airplaneId: validateAirplaneId(e.target.value) })}
           />
-          <small>Ejemplo: N12345 o XA-ABC</small>
+          {errors.airplaneId && <small className="error-message">{errors.airplaneId}</small>}
         </div>
 
         <div className="form-buttons">
-          <button type="button" className="cancel-button">Cancelar</button>
           <button type="submit" className="submit-button">Registrar</button>
         </div>
       </form>
-
-      {/* Ventana emergente de error */}
-      {showError && (
-        <div className="modal">
-          <div className="modal-content">
-            <h2>Registro de aviones</h2>
-            <p>Campos obligatorios no completados:</p>
-            <div className="error">
-              <span>❗</span> Campos faltantes: {missingFields.join(', ')}
-            </div>
-            <div className="buttons">
-              <button onClick={handleCloseErrorModal}>Cancelar</button>
-              <button onClick={handleCloseErrorModal}>Volver al Formulario</button>
-            </div>
-          </div>
-        </div>
-      )}
-
-      {/* Ventana emergente de éxito */}
-      {showSuccess && (
-        <div className="modal">
-          <div className="modal-content">
-            <h2>Registro de aviones</h2>
-            <p>El registro se realizó con exito.</p>
-            <div className="buttons">
-              <button onClick={handleCloseSuccessModal}>Cerrar</button>
-            </div>
-          </div>
-        </div>
-      )}
     </div>
   );
 };

@@ -1,4 +1,4 @@
-// File: C:\Users\angie\OneDrive\Documentos\VSC projects\frontend-virtual\app\page.tsx
+// File: D:\Desarrollo de Software\Actualizado Gestion de Vuelos\frontend-virtual\app\page.tsx
 import * as entry from '../../../app/page.js'
 import type { ResolvingMetadata, ResolvingViewport } from 'next/dist/lib/metadata/types/metadata-interface.js'
 
