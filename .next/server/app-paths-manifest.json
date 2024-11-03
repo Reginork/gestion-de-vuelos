@@ -1,3 +1,6 @@
 {
-  "/page": "app/page.js"
+  "/_not-found/page": "app/_not-found/page.js",
+  "/page": "app/page.js",
+  "/components/RegistrarAviones": "app/components/RegistrarAviones.js",
+  "/components/ConsultarAviones": "app/components/ConsultarAviones.js"
 }
