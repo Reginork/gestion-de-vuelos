@@ -1,7 +1,7 @@
 import React from 'react';
 import './styles/global.css';
-import AirplaneForm from './components/RegisterAirplane';
-import ConsultAirplane from './components/ConsultAirplane';
+import AirplaneForm from './components/RegistrarAviones';
+import ConsultAirplane from './components/ConsultarAviones';
 
 const app = () => {
   return (

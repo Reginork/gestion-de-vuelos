@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 import '../styles/global.css';
 
-const ConsultAirplane: React.FC = () => {
+const ConsultarAviones: React.FC = () => {
   const [maxSeats, setMaxSeats] = useState('');
   const [seatDistribution, setSeatDistribution] = useState('');
   const [airplaneId, setAirplaneId] = useState('');
@@ -215,4 +215,4 @@ const ConsultAirplane: React.FC = () => {
   );
 };
 
-export default ConsultAirplane;
+export default ConsultarAviones;
