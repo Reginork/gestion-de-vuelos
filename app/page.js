@@ -38,7 +38,7 @@ const App = () => {
             <button style={styles.actionButton}>Eliminar vuelos</button>
           </Link>
           <Link href="/CancelarVuelos">
-            <button style={styles.actionButton}>Cancelar vuelo</button>
+            <button style={styles.actionButton}>Cancelar vuelos</button>
           </Link>
         </div>
       </main>

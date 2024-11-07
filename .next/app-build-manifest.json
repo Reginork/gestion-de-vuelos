@@ -14,8 +14,20 @@
     "/RegistrarAviones/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/chunks/app/RegistrarAviones/page.js",
-      "static/css/app/RegistrarAviones/page.css"
+      "static/css/app/RegistrarAviones/page.css",
+      "static/chunks/app/RegistrarAviones/page.js"
+    ],
+    "/ConsultarAviones/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/app/ConsultarAviones/page.css",
+      "static/chunks/app/ConsultarAviones/page.js"
+    ],
+    "/ConsultarVuelos/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/app/ConsultarVuelos/page.css",
+      "static/chunks/app/ConsultarVuelos/page.js"
     ],
     "/_not-found/page": [
       "static/chunks/webpack.js",
