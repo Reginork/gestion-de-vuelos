@@ -1,11 +1,10 @@
+'use client';
+
 import React from 'react';
 import Link from 'next/link';
 import './styles/global.css';
-import RegistrarAviones from './components/RegistrarAviones';
-import ConsultarAviones from './components/ConsultarAviones';
 
-
-const app = () => {
+const App = () => {
   return (
     <div style={styles.container}>
       {/* Header */}
@@ -23,22 +22,22 @@ const app = () => {
         <button style={styles.backButton}>Regresar</button>
         <h2 style={styles.subtitle}>Gestión de vuelos</h2>
         <div style={styles.buttonContainer}>
-          <Link href="/components/RegistrarAviones">
+          <Link href="/RegistrarAviones">
             <button style={styles.actionButton}>Registrar aviones</button>
           </Link>
-          <Link href="/components/ConsultarAviones">
+          <Link href="/ConsultarAviones">
             <button style={styles.actionButton}>Consultar aviones</button>
           </Link>
-          <Link href="/components/CrearVuelos">
+          <Link href="/CrearVuelos">
             <button style={styles.actionButton}>Crear vuelos</button>
           </Link>
-          <Link href="/components/ConsultarVuelos">
+          <Link href="/ConsultarVuelos">
             <button style={styles.actionButton}>Consultar vuelos</button>
           </Link>
-          <Link href="/components/EliminarVuelos">
+          <Link href="/EliminarVuelos">
             <button style={styles.actionButton}>Eliminar vuelos</button>
           </Link>
-          <Link href="/components/CancelarVuelos">
+          <Link href="/CancelarVuelos">
             <button style={styles.actionButton}>Cancelar vuelo</button>
           </Link>
         </div>
@@ -47,8 +46,7 @@ const app = () => {
   );
 };
 
-export default app;
-
+export default App;
 
 const styles = {
   container: {
@@ -125,5 +123,5 @@ const styles = {
     borderRadius: '5px',
     fontSize: '16px',
     cursor: 'pointer',
-  },
+  },
 };
