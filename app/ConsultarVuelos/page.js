@@ -9,13 +9,17 @@ const ConsultarVuelos = () => {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100 p-6">
-      <div className="w-full max-w-md bg-gray-200 p-8 rounded-lg shadow-md">
-        <div className="flex items-center justify-center mb-6">
-          <img src="path/to/logo.png" alt="Logo Singapur" className="h-12 mr-2" />
-          <h1 className="text-blue-600 text-4xl font-bold">Singapur</h1>
+    <div style={styles.container}>
+      {/* Header */}
+      <header style={styles.header}>
+        <button style={styles.menuButton}>☰</button>
+        <div style={styles.logoContainer}>
+          <img src="/img/logo.png" alt="Logo" style={styles.logo} />
+          <h1 style={styles.title}>Singapur</h1>
         </div>
-        <h2 className="text-2xl font-bold text-center mb-4">Consultar Vuelos</h2>
+        <img src="/img/profile.png" alt="Profile" style={styles.profileIcon} />
+      </header>
+        <h2 className="text-2xl font-bold text-center mb-4">Consultar vuelos</h2>
         <p className="text-center text-gray-600 mb-8">Registre uno de los siguientes datos para la consulta</p>
         
         <form id="form-consulta">
@@ -57,9 +61,85 @@ const ConsultarVuelos = () => {
           </div>
         </form>
       </div>
-    </div>
   );
 };
 
 export default ConsultarVuelos;
 
+const styles = {
+  container: {
+    fontFamily: 'Arial, sans-serif',
+  },
+  header: {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    padding: '10px 20px',
+    backgroundColor: '#ffffff',
+    boxShadow: '0px 2px 4px rgba(0, 0, 0, 0.1)',
+  },
+  menuButton: {
+    fontSize: '24px',
+    backgroundColor: 'transparent',
+    border: 'none',
+    cursor: 'pointer',
+  },
+  logoContainer: {
+    display: 'flex',
+    alignItems: 'center',
+  },
+  logo: {
+    width: '40px',
+    height: '40px',
+    marginRight: '10px',
+  },
+  title: {
+    fontSize: '24px',
+    color: '#0070f3',
+  },
+  profileIcon: {
+    width: '40px',
+    height: '40px',
+    borderRadius: '50%',
+  },
+  main: {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    padding: '20px',
+    backgroundColor: '#f5f5f5',
+    minHeight: 'calc(100vh - 80px)',
+  },
+  backButton: {
+    alignSelf: 'flex-start',
+    padding: '10px 20px',
+    backgroundColor: '#2a6a8c',
+    color: 'white',
+    border: 'none',
+    borderRadius: '5px',
+    cursor: 'pointer',
+  },
+  subtitle: {
+    fontSize: '24px',
+    margin: '20px 0',
+  },
+  buttonContainer: {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    gap: '10px',
+    width: '100%',
+    maxWidth: '400px',
+  },
+  actionButton: {
+    width: '350px',
+    height: '40px',
+    padding: '10px',
+    backgroundColor: '#2a6a8c',
+    color: 'white',
+    border: 'none',
+    borderRadius: '5px',
+    fontSize: '16px',
+    cursor: 'pointer',
+  },
+};
