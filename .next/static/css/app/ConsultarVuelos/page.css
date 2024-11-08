@@ -6,7 +6,8 @@
 .register-airplane-container {
   max-width: 600px;
   margin: 0 auto;
-  padding: 20px;
+  margin-top: 20px;
+  padding: 60px;
   background-color: #f9f9f9;
   border-radius: 8px;
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
@@ -118,7 +119,7 @@ small {
   background-color: #0056b3;
 }
 
-/*Diseño del formulario de consulta*/
+/*Diseño del formulario de consulta de aviones*/
 
 .consult-airplane-container {
   max-width: 600px;
@@ -175,6 +176,103 @@ small {
   border: none;
   border-radius: 5px;
   cursor: pointer;
+}
+
+.clear-button:hover,
+.search-button:hover {
+  opacity: 0.8;
+}
+
+/*Diseño del formulario de consulta de vuelos*/
+.consult-flight-container {
+  max-width: 600px;
+  margin: 40px auto; /* Centramos el contenedor */
+  padding: 20px;
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+/* Título principal */
+.title {
+  font-size: 24px;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+/* Subtítulo */
+.subtitle {
+  font-size: 16px;
+  color: #666;
+  margin-bottom: 20px;
+}
+
+/* Grupo de formulario */
+.form-group {
+  margin-bottom: 15px;
+  text-align: left;
+}
+
+.form-group label {
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 5px;
+  display: block;
+}
+
+.form-group input,
+.form-group select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+  color: #333;
+  transition: border-color 0.3s;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+  border-color: #4CAF50; /* Verde para el foco */
+  outline: none;
+}
+
+/* Texto de ejemplo */
+.text-sm {
+  font-size: 12px;
+  color: #999;
+  margin-top: 5px;
+}
+
+/* Botones */
+.form-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.clear-button,
+.search-button {
+  width: 48%;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s, opacity 0.3s;
+}
+
+.clear-button {
+  background-color: #f44336; /* Rojo */
+  color: #fff;
+}
+
+.search-button {
+  background-color: #4CAF50; /* Verde */
+  color: #fff;
 }
 
 .clear-button:hover,
@@ -241,4 +339,45 @@ small {
   font-size: 14px;
 }
 
+
+/*!*******************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[14].oneOf[12].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[14].oneOf[12].use[3]!./app/styles/header.css ***!
+  \*******************************************************************************************************************************************************************************************************************************************************************/
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 20px;
+  background-color: #ffffff;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.menu-button {
+  font-size: 24px;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
+}
+
+.logo {
+  width: 40px;
+  height: 40px;
+  margin-right: 10px;
+}
+
+.title {
+  font-size: 24px;
+  color: #0070f3;
+}
+
+.profile-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
 

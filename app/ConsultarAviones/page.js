@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import '../styles/global.css';
+import '../styles/header.css';
 
 function ConsultarAviones() {
   const [maxSeats, setMaxSeats] = useState('');
@@ -91,7 +92,18 @@ function ConsultarAviones() {
   };
 
   return (
-    <div className="consult-airplane-container">
+    <div className="container">
+      {/* Header */}
+      <header className="header">
+        <button className="menu-button">☰</button>
+        <div className="logo-container">
+          <img src="/img/logo.png" alt="Logo" className="logo" />
+          <h1 className="title">Singapur</h1>
+        </div>
+        <img src="/img/profile.png" alt="Profile" className="profile-icon" />
+      </header>
+
+      <div className="consult-airplane-container">
       <h1 className="title">Consultar aviones</h1>
       <p className="subtitle">Registre uno de los siguientes datos para la consulta</p>
 
@@ -205,6 +217,7 @@ function ConsultarAviones() {
         </div>
       </form>
     </div>
+  </div>
   );
 }
 
