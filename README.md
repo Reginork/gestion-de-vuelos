@@ -6,7 +6,7 @@ Repositorio del trabajo asignado a ingeniería web en fábrica escuela.
 
 # Páginas que se crearon:
 
-# Página principal con los botones:
+**Página principal con los botones**:
 * Registro de aviones.
 * Consulta de aviones.
 * Consulta de vuelos.
@@ -14,7 +14,7 @@ Repositorio del trabajo asignado a ingeniería web en fábrica escuela.
 * Eliminar vuelos.
 * Cancelar vuelos.
 
-# Páginas:
+**Información sobre el contenido de las páginas**:
 Cada botón lleva a su respectiva página, donde se puede visualizar el diseño estipulado.
 
 ## Tecnologías utilizadas
@@ -40,6 +40,3 @@ Para clonar y ejecutar este proyecto localmente, sigue estos pasos:
 3. **Despliegue en Vercel**:
     ```bash
     https://gestion-de-vuelos.vercel.app/
-
-
-
