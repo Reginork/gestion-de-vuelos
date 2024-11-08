@@ -1,6 +1,6 @@
 {
   "/page": "app/page.js",
-  "/ConsultarAviones/page": "app/ConsultarAviones/page.js",
   "/ConsultarVuelos/page": "app/ConsultarVuelos/page.js",
+  "/ConsultarAviones/page": "app/ConsultarAviones/page.js",
   "/CrearVuelos/page": "app/CrearVuelos/page.js"
 }
