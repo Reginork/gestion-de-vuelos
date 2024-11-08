@@ -1,6 +1,5 @@
 'use client';
 import React from 'react';
-import DOMPurify from 'dompurify'; // Para prevenir ataques XSS
 import '../styles/global.css';
 import '../styles/header.css';
 

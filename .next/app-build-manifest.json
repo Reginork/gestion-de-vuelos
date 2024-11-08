@@ -11,12 +11,6 @@
       "static/chunks/main-app.js",
       "static/chunks/app/layout.js"
     ],
-    "/ConsultarVuelos/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/css/app/ConsultarVuelos/page.css",
-      "static/chunks/app/ConsultarVuelos/page.js"
-    ],
     "/RegistrarAviones/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
@@ -29,10 +23,17 @@
       "static/css/app/ConsultarAviones/page.css",
       "static/chunks/app/ConsultarAviones/page.js"
     ],
-    "/_not-found/page": [
+    "/ConsultarVuelos/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/chunks/app/_not-found/page.js"
+      "static/css/app/ConsultarVuelos/page.css",
+      "static/chunks/app/ConsultarVuelos/page.js"
+    ],
+    "/CrearVuelos/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/app/CrearVuelos/page.css",
+      "static/chunks/app/CrearVuelos/page.js"
     ]
   }
 }
