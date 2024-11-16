@@ -5,7 +5,7 @@ import '../styles/header.css';
 
 const ConsultarVuelos = () => {
   const handleLimpiar = () => {
-    document.getElementById('form-consulta').reset();
+    document.getElementById('form-consult-flights').reset();
   };
 
   return (
@@ -19,43 +19,62 @@ const ConsultarVuelos = () => {
         </div>
         <img src="/img/profile.png" alt="Profile" className="profile-icon" />
       </header>
-      <div className="register-airplane-container">
-        <h2 className="text-2xl font-bold text-center mb-4">Consultar vuelos</h2>
-        <p className="text-center text-gray-600 mb-8">Registre uno de los siguientes datos para la consulta</p>
-        
-        <form id="form-consulta">
-          <div className="mb-4">
-            <label className="block font-semibold">Ciudad de origen</label>
-            <input type="text" className="w-full p-2 border rounded-md" placeholder="Ingrese código ciudad origen" />
-            <p className="text-gray-500 text-sm">(Ejemplo: MDE)</p>
+
+      <div className="form-consult-flights">
+        <h1 className="title">Consultar vuelos</h1>
+        <p className="text-center text-gray-600 mb-8">
+          Registre uno de los siguientes datos para la consulta
+        </p>
+
+        <form id="form-consult-flights" className="space-y-6">
+          <div>
+            <label className="block font-semibold text-gray-800 mb-2">Ciudad de origen</label>
+            <input
+              type="text"
+              className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+              placeholder="Ingrese código ciudad origen"
+            />
+            <p className="text-gray-500 text-sm mt-1">(Ejemplo: MDE)</p>
           </div>
-          <div className="mb-4">
-            <label className="block font-semibold">Número de vuelo</label>
-            <input type="text" className="w-full p-2 border rounded-md" placeholder="Ingrese código de vuelo" />
-            <p className="text-gray-500 text-sm">(Ejemplo: SA1234)</p>
+          <div>
+            <label className="block font-semibold text-gray-800 mb-2">Número de vuelo</label>
+            <input
+              type="text"
+              className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+              placeholder="Ingrese código de vuelo"
+            />
+            <p className="text-gray-500 text-sm mt-1">(Ejemplo: SA1234)</p>
           </div>
-          <div className="mb-4">
-            <label className="block font-semibold">Ciudad de destino</label>
-            <input type="text" className="w-full p-2 border rounded-md" placeholder="Ingrese código ciudad origen" />
-            <p className="text-gray-500 text-sm">(Ejemplo: BOG)</p>
+          <div>
+            <label className="block font-semibold text-gray-800 mb-2">Ciudad de destino</label>
+            <input
+              type="text"
+              className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+              placeholder="Ingrese código ciudad destino"
+            />
+            <p className="text-gray-500 text-sm mt-1">(Ejemplo: BOG)</p>
           </div>
-          <div className="mb-4">
-            <label className="block font-semibold">Tipo de avión</label>
-            <input type="text" className="w-full p-2 border rounded-md" placeholder="Ingrese el tipo de avión" />
-            <p className="text-gray-500 text-sm">(Ejemplo: Boeing 747)</p>
+          <div>
+            <label className="block font-semibold text-gray-800 mb-2">Tipo de avión</label>
+            <input
+              type="text"
+              className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+              placeholder="Ingrese el tipo de avión"
+            />
+            <p className="text-gray-500 text-sm mt-1">(Ejemplo: Boeing 747)</p>
           </div>
 
-          <div className="flex justify-between mt-6">
+          <div className="flex justify-between">
             <button
               type="button"
               onClick={handleLimpiar}
-              className="w-1/2 py-2 mr-2 bg-white border border-blue-700 text-blue-700 font-semibold rounded-md hover:bg-gray-100"
+              className="limpiar-button"
             >
               Limpiar
             </button>
             <button
               type="submit"
-              className="w-1/2 py-2 ml-2 bg-blue-700 text-white font-semibold rounded-md hover:bg-blue-800"
+              className="buscar-button"
             >
               Buscar
             </button>
