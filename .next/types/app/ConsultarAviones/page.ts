@@ -1,4 +1,4 @@
-// File: C:\Users\angie\OneDrive\Documentos\VSC projects\gestion-de-vuelos\app\ConsultarAviones\page.js
+// File: D:\Desarrollo de Software\Actualizado Gestion de Vuelos\frontend-virtual\app\ConsultarAviones\page.js
 import * as entry from '../../../../app/ConsultarAviones/page.js'
 import type { ResolvingMetadata, ResolvingViewport } from 'next/dist/lib/metadata/types/metadata-interface.js'
 

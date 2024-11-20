@@ -1,9 +1,9 @@
 "use client";
-import React, { useState } from 'react';
-import DatePicker from 'react-datepicker';
-import Select from 'react-select';
-import 'react-datepicker/dist/react-datepicker.css';
-import '../styles/header.css';
+import React, { useState } from "react";
+import DatePicker from "react-datepicker";
+import Select from "react-select";
+import "react-datepicker/dist/react-datepicker.css";
+import "../styles/header.css";
 
 const AgendarVueloDirecto = () => {
   const [showModal, setShowModal] = useState(false);
@@ -15,6 +15,7 @@ const AgendarVueloDirecto = () => {
   const [selectedCity, setSelectedCity] = useState(null);
   const [fechaLlegada, setFechaLlegada] = useState(null);
   const [tipoAvion, setTipoAvion] = useState("");
+  const [errors, setErrors] = useState({});
 
   const countries = [
     { value: 'CO', label: 'Colombia' },
@@ -574,17 +575,41 @@ const AgendarVueloDirecto = () => {
     setSelectedCity(null); // Resetea la ciudad al cambiar el país
   };
 
-  const handleAccept = () => {
-    setShowModal(true);
+  const validateField = (field, value) => {
+    if (!value) {
+      return `${field} es requerido.`;
+    }
+    if (field === "Número de vuelo" && isNaN(Number(value))) {
+      return "El número de vuelo debe ser un valor numérico.";
+    }
+    return null;
   };
 
-  const handleCloseModal = () => {
-    setShowModal(false);
+  const validateForm = () => {
+    const newErrors = {};
+    newErrors.numeroVuelo = validateField("Número de vuelo", numeroVuelo);
+    newErrors.ciudadOrigen = validateField("Ciudad de origen", ciudadOrigen);
+    newErrors.fechaSalida = validateField("Fecha y hora de salida", fechaSalida);
+    newErrors.tipoVuelo = validateField("Tipo de vuelo", tipoVuelo);
+    newErrors.selectedCountry = validateField("País", selectedCountry?.label);
+    newErrors.selectedCity = validateField("Ciudad de destino", selectedCity?.label);
+    newErrors.fechaLlegada = validateField("Fecha y hora de llegada", fechaLlegada);
+    newErrors.tipoAvion = validateField("Tipo de avión", tipoAvion);
+
+    setErrors(newErrors);
+    return Object.values(newErrors).every((error) => !error);
   };
+
+  const handleAccept = () => {
+    if (validateForm()) {
+      setShowModal(true);
+    }
+  };
+
+  const handleCloseModal = () => setShowModal(false);
 
   return (
     <div className="container">
-      {/* Header */}
       <header className="header">
         <button className="menu-button">☰</button>
         <div className="logo-container">
@@ -593,6 +618,7 @@ const AgendarVueloDirecto = () => {
         </div>
         <img src="/img/profile.png" alt="Profile" className="profile-icon" />
       </header>
+      
       <div style={styles.container}>
       <h2 style={styles.title}>Agendar vuelo directo</h2>
       <p style={styles.description}>Registre los siguientes datos para agendar vuelos directos</p>
@@ -607,6 +633,7 @@ const AgendarVueloDirecto = () => {
           style={styles.input}
         />
         <p style={styles.exampleText}>(Ejemplo: 300)</p>
+        <p style={styles.errorText}>{errors.numeroVuelo}</p>
       </div>
 
       <div style={styles.formGroup}>
@@ -619,6 +646,7 @@ const AgendarVueloDirecto = () => {
           style={styles.input}
         />
         <p style={styles.exampleText}>(Ejemplo: Medellín)</p>
+        <p style={styles.errorText}>{errors.ciudadOrigen}</p>
       </div>
 
       <div style={styles.formGroup}>
@@ -631,6 +659,7 @@ const AgendarVueloDirecto = () => {
           placeholderText="Selecciona fecha y hora de salida"
           style={styles.input}
         />
+        <p style={styles.errorText}>{errors.fechaSalida}</p>
       </div>
 
       <div style={styles.formGroup}>
@@ -639,8 +668,8 @@ const AgendarVueloDirecto = () => {
           <button
             style={{
               ...styles.typeButton,
-              backgroundColor: tipoVuelo === "Nacional" ? '#333' : '#ccc',
-              color: tipoVuelo === "Nacional" ? '#fff' : '#000'
+              backgroundColor: tipoVuelo === "Nacional" ? "#333" : "#ccc",
+              color: tipoVuelo === "Nacional" ? "#fff" : "#000",
             }}
             onClick={() => setTipoVuelo("Nacional")}
           >
@@ -649,14 +678,15 @@ const AgendarVueloDirecto = () => {
           <button
             style={{
               ...styles.typeButton,
-              backgroundColor: tipoVuelo === "Internacional" ? '#333' : '#ccc',
-              color: tipoVuelo === "Internacional" ? '#fff' : '#000'
+              backgroundColor: tipoVuelo === "Internacional" ? "#333" : "#ccc",
+              color: tipoVuelo === "Internacional" ? "#fff" : "#000",
             }}
             onClick={() => setTipoVuelo("Internacional")}
           >
             Internacional
           </button>
         </div>
+        <p style={styles.errorText}>{errors.tipoVuelo}</p>
       </div>
 
       <div style={styles.formGroup}>
@@ -667,6 +697,7 @@ const AgendarVueloDirecto = () => {
           onChange={handleCountryChange}
           placeholder="Selecciona un país"
         />
+      <p style={styles.errorText}>{errors.selectedCountry}</p>
       </div>
 
       <div style={styles.formGroup}>
@@ -678,6 +709,7 @@ const AgendarVueloDirecto = () => {
           placeholder="Selecciona una ciudad"
           isDisabled={!selectedCountry}
         />
+      <p style={styles.errorText}>{errors.selectedCity}</p>
       </div>
 
       <div style={styles.formGroup}>
@@ -690,6 +722,7 @@ const AgendarVueloDirecto = () => {
           placeholderText="Selecciona fecha y hora de llegada"
           style={styles.input}
         />
+      <p style={styles.errorText}>{errors.fechaLlegada}</p>
       </div>
 
       <div style={styles.formGroup}>
@@ -702,6 +735,7 @@ const AgendarVueloDirecto = () => {
           style={styles.input}
         />
         <p style={styles.exampleText}>(Ejemplo: Boeing 737, Airbus A320)</p>
+        <p style={styles.errorText}>{errors.tipoAvion}</p>
       </div>
 
       <div style={styles.buttonContainer}>
@@ -805,6 +839,10 @@ const styles = {
       border: 'none',
       borderRadius: '4px',
       cursor: 'pointer',
+    },
+    errorText: {
+      color: "red",
+      fontSize: "12px",
     },
   
     // Estilos para la ventana emergente (modal)
