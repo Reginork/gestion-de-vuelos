@@ -34,9 +34,6 @@ const App = () => {
           <Link href="/ConsultarVuelos">
             <button style={styles.actionButton}>Consultar vuelos</button>
           </Link>
-          <Link href="/EliminarVuelos">
-            <button style={styles.actionButton}>Eliminar vuelos</button>
-          </Link>
           <Link href="/CancelarVuelos">
             <button style={styles.actionButton}>Cancelar vuelos</button>
           </Link>

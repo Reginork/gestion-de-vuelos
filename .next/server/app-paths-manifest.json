@@ -1,8 +1,7 @@
 {
+  "/page": "app/page.js",
   "/ConsultarAviones/page": "app/ConsultarAviones/page.js",
   "/CrearVuelos/page": "app/CrearVuelos/page.js",
-  "/CancelarVuelos/page": "app/CancelarVuelos/page.js",
   "/ConsultarVuelos/page": "app/ConsultarVuelos/page.js",
-  "/page": "app/page.js",
-  "/EliminarVuelos/page": "app/EliminarVuelos/page.js"
+  "/CancelarVuelos/page": "app/CancelarVuelos/page.js"
 }

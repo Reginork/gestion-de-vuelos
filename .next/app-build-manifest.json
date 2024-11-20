@@ -29,22 +29,17 @@
       "static/css/app/CrearVuelos/page.css",
       "static/chunks/app/CrearVuelos/page.js"
     ],
-    "/CancelarVuelos/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/css/app/CancelarVuelos/page.css",
-      "static/chunks/app/CancelarVuelos/page.js"
-    ],
-    "/EliminarVuelos/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/EliminarVuelos/page.js"
-    ],
     "/ConsultarVuelos/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
       "static/css/app/ConsultarVuelos/page.css",
       "static/chunks/app/ConsultarVuelos/page.js"
+    ],
+    "/CancelarVuelos/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/app/CancelarVuelos/page.css",
+      "static/chunks/app/CancelarVuelos/page.js"
     ]
   }
 }
